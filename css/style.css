@@ -1,0 +1,2821 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+  font-family: "Funnel Display", sans-serif;
+  background-color: #000;
+  overflow-x: hidden;
+
+}
+
+header {
+   display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 4%;
+    background-color: #000;
+    position: relative;
+}
+
+.logo img {
+    height: 50px;
+}
+#menu {
+     display: none; 
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#menu:hover {
+    color: #0B11FF;
+}
+
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #0B11FF;
+}
+
+.btn-cta a {
+    background-color: #0B11FF;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 60px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-cta a:hover {
+    background-color: #fff;
+    color: #0B11FF;
+}
+
+@media (max-width: 992px) {
+    
+    header {
+        padding: 15px 5%;  
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo {
+        order: 1;        /* 1° a la izquierda */
+        flex-shrink: 0;
+    }
+
+    .logo img {
+        height: 42px;    /* Un toque más chico para dar aire en mobile */
+    }
+
+    /* El menú (nav) sigue oculto de fondo */
+    nav {
+        position: absolute;
+        top: 100%; 
+        left: 0;
+        width: 100%;
+        background-color: #000000;
+        border-top: 1px solid #111;
+        padding: 40px 0;
+        z-index: 1000;
+        
+        display: flex; 
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        transform: translateY(-150%);
+        opacity: 0;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+     .btn-cta {
+        display: block;
+        order: 2;         /* 2° en el medio */
+        margin-left: auto; /* Empuja al menú hacia la extrema derecha */
+        margin-right: 15px; /* Separa el CTA del botón de hamburguesa */
+        flex-shrink: 1;   /* Permite que el botón se adapte si la pantalla es muy chica */
+    }
+
+    .btn-cta a {
+        padding: 8px 14px; /* Más compacto para que entre cómodo */
+        font-size: 0.85rem;  
+        white-space: nowrap;  
+    }
+
+    #menu {
+        display: block; 
+        order: 3;         /* 3° a la extrema derecha */
+        z-index: 1005;    /* Nos aseguramos de que quede por encima de todo para recibir el click */
+        flex-shrink: 0;   /* Evita que se colapse o se esconda */
+        position: relative; /* Asegura el correcto funcionamiento del z-index */
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 20px;
+    }
+
+    nav ul li a {
+        font-size: 1.4rem; 
+        padding: 10px;
+    }
+}
+
+/* Ajuste fino para pantallas mini (menos de 400px) */
+@media (max-width: 400px) {
+    .btn-cta a {
+        padding: 6px 12px;
+        font-size: 0.75rem; /* Achicamos un pelín más el texto del CTA para que no empuje al menú */
+    }
+    .btn-cta {
+        margin-right: 10px;
+    }
+}
+
+/* hero */
+
+.hero {
+    position: relative;
+    
+    background-repeat: no-repeat;
+    
+    min-height: 80vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    background-color: #000;
+    background-blend-mode: overlay;
+}
+
+
+.hero-container {
+    max-width: 800px;
+    padding: 20px;
+    color: #ffffff; 
+    z-index: 2;
+}
+
+.hero .hero-container h1 {
+    font-weight: 600;
+    font-size: 40px;
+}
+
+.hero-subtitule {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.hero-image {
+    display: none;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-primary {
+     background-color: #0B11FF;
+    color: #fff;
+    padding: 15px 15px;
+    border-radius: 60px;
+    text-decoration: none;
+}
+
+.btn-primary:hover{
+    background-color: #fff;
+    color:#0B11FF;
+}
+
+.btn-secondary {
+    background-color: #0B11FF;
+    color: #fff;
+    padding: 10px 20px;
+    border: 1px solid #0B11FF;
+    border-radius: 60px;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+      background-color: #fff;
+    color: #0B11FF;
+     border: 1px solid #0B11FF;
+}
+
+/* servicios */
+
+.servicios {
+    background-color: #000;
+    min-height: 60vh; 
+}
+
+.servicios h2  {
+    padding: 20px;
+     color: #fff;
+    text-align: center;
+    font-weight: 600;
+    font-size: 2.2rem;
+ }
+
+.grid-servicios   {
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap;
+    padding: 20px 20px;
+}
+
+article {
+    color: #fff;
+     text-align: center;
+     padding: 20px 15px;
+}
+
+.servicios {
+     padding: 15px 20px;
+}
+
+.servicios .grid-servicios h3, p {
+    font-size: 1.1rem;
+}
+
+
+ .servicios .icono i {
+    font-size: 2rem; 
+    color: fff;  
+    margin-bottom: 2px;
+    transition: transform 0.3s ease; 
+    color: #fff;
+}
+
+ 
+
+.icono {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    background-color: #0B11FF;
+    border-radius: 60%;       
+    margin: 0 auto 20px;      
+}
+
+ 
+
+@media (max-width: 768px) {
+    .proceso {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 20px;
+        gap: 35px;             
+    }
+
+    .proceso h2 {
+        text-align: center;
+        flex: 1 1 auto;
+        font-size: 2rem;
+    }
+
+    .proceso ol {
+        text-align: left;     
+        flex: 1 1 auto;
+    }
+}
+
+.tecnologias {
+    margin: 20px;
+    padding: 60px 10px; /* Más aire arriba y abajo */
+    color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.tecnologias p {
+    font-size: 1.1rem;
+    color: #aaa;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+/* Contenedor principal */
+.logos {
+    overflow: hidden;
+    padding: 20px 0;
+    background: transparent;
+    white-space: nowrap;
+    position: relative;
+    display: flex; /* Fuerza a los hijos directos a alinearse en fila */
+}
+
+/* Efecto de difuminado (fade) a los costados muy Pro */
+.logos:before,
+.logos:after {
+    position: absolute;
+    top: 0;
+    width: 10px; /* Reducido un poco para que no tape tanto en pantallas chicas */
+    height: 100%;
+    content: "";
+    z-index: 2;
+    pointer-events: none; /* Permite clickear a través del degradado */
+}
+
+/* Degradados transparentes que ocultan los bordes del carrusel */
+.logos:before {
+    left: 0;
+    background: linear-gradient(to right, #000 0%, rgba(0,0,0,0) 100%);
+}
+
+.logos:after {
+    right: 0;
+    background: linear-gradient(to left, #000 0%, rgba(0,0,0,0) 100%);
+}
+
+/* Estructura de la animación */
+.logos-slide {
+    display: flex; /* Alinea las imágenes internas en fila */
+    align-items: center;
+    flex-shrink: 0; /* Evita que el contenedor se deforme o se achique */
+    animation: slide 25s infinite linear; /* Subí a 25s para que vayan más suaves y prolijos */
+}
+
+.logos-slide img {
+    height: 120px; /* Rediseñado a un tamaño más prolijo y estándar de marcas */
+    width: auto;  /* Mantiene la proporción original de cada logo sin estirarse */
+    margin: 0 30px; /* Más separación entre logos */
+ 
+}
+
+.logos-slide img:hover {
+    opacity: 1; /* Al pasar el mouse, recupera intensidad */
+}
+
+/* Animación exacta */
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%); /* Desplaza el contenedor exactamente su propio ancho */
+    }
+}
+
+
+/* quienes somos */
+
+/* --- SECCIÓN QUIÉNES SOMOS --- */
+.quienes-somos {
+    background-color: #000000; /* Fondo negro de tu sitio */
+    color: #ffffff;
+    padding: 60px 5%;
+    overflow: hidden;
+}
+
+/* Contenedor principal usando Flexbox en versión móvil (columna) */
+.quienes-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Bloque izquierdo de textos */
+.quienes-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.quienes-tag {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.quienes-content h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+/* Color destacado para "mundo digital" (Azul CafeWeb) */
+.text-highlight {
+    color: #0B11FF; 
+}
+
+/* Detalle ortográfico corregido de la captura original ("más de más de") */
+.quienes-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #cccccc;
+    margin-bottom: 40px;
+}
+
+.quienes-text strong {
+    color: #fff;
+}
+
+/* Contenedor de Métricas en Flexbox */
+.quienes-stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap; /* Permite que bajen si la pantalla es muy chica */
+}
+
+.stat-item {
+    flex: 1;
+    min-width: 100px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #888888;
+    line-height: 1.3;
+}
+
+/* Bloque derecho de la Imagen */
+.quienes-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quienes-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px; /* Bordes redondeados sutiles como tu captura */
+    max-height: 450px;
+}
+
+/* --- RESPONSIVE: ESCRITORIO (A partir de pantallas medianas/grandes) --- */
+@media (min-width: 992px) {
+    .quienes-somos {
+        padding: 100px 8%; /* Más aire en pantallas grandes */
+    }
+
+    .quienes-container {
+        flex-direction: row; /* Cambia a horizontal (Lado a Lado) */
+        gap: 80px;           /* Separación prolija entre texto e imagen */
+        align-items: center;
+    }
+
+    .quienes-content h2 {
+        font-size: 3rem; /* Título imponente en Escritorio */
+    }
+
+    .quienes-image img {
+        /* Esquina inferior derecha redondeada más pronunciada si querés imitar el estilo de la captura */
+        border-bottom-right-radius: 40px; 
+    }
+}
+
+/* testimonios */
+
+/* --- SECCIÓN TESTIMONIOS --- */
+.testimonios {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 80px 5%;
+}
+
+.testimonios-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+}
+
+.testi-tag {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.testimonios-header h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* El acento azul eléctrico de CafeWeb */
+.testimonios-header .text-highlight {
+    color: #0B11FF;
+}
+
+.testimonios-header p {
+    font-size: 1.05rem;
+    color: #aaaaaa;
+    line-height: 1.5;
+}
+
+/* Grilla adaptable con CSS Grid */
+.testimonios-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Una sola columna por defecto en mobile */
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Estilos de la tarjeta individual (Estilo Google Glass/Brutalista sutil) */
+.testi-card {
+    background-color: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.testi-card:hover {
+    border-color: #0B11FF; /* Se ilumina con tu azul al pasar el mouse */
+    transform: translateY(-5px);
+}
+
+/* Cabecera interna de la tarjeta */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+/* Avatares con iniciales */
+.user-avatar, .user-avatar-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #5d4037; /* Color marrón por defecto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+/* Variaciones de colores reales de los avatares de Google */
+.user-avatar.color-e { background-color: #e91e63; }
+.user-avatar.color-g { background-color: #009688; }
+.user-avatar-img { background-color: #333; color: #888; }
+
+.user-info h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.user-info span {
+    font-size: 0.8rem;
+    color: #666666;
+    display: block;
+    margin-top: 2px;
+}
+
+/* Icono de Google arriba a la derecha */
+.google-icon {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    font-size: 1.1rem;
+    color: #888888;
+}
+
+/* Bloque de estrellas e icono verificado */
+.stars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 15px;
+}
+
+.stars i.fa-star {
+    color: #ffb300; /* Color dorado de las estrellas de Google */
+    font-size: 0.95rem;
+}
+
+.verify-icon {
+    color: #1a73e8; /* Azul del check verificado de Google */
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+/* Texto del testimonio */
+.testi-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #cccccc;
+}
+
+.read-more {
+    color: #fff;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 3px;
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* Tablets (Pantallas medianas) */
+@media (min-width: 600px) {
+    .testimonios-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas por fila */
+    }
+}
+
+/* Escritorio (Monitores y Notebooks) */
+@media (min-width: 1024px) {
+    .testimonios-header h2 {
+        font-size: 3rem;
+    }
+    
+    .testimonios-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas alineadas de forma pareja */
+    }
+}
+
+/* procesos */
+
+/* --- SECCIÓN PROCESO DE 4 PASOS --- */
+.proceso-pasos {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 80px 5%;
+}
+
+/* Cabecera superior estructurada en Flexbox (Desktop) */
+.proceso-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+}
+
+.header-left {
+    max-width: 750px;
+}
+
+.proceso-tag {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.proceso-header h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+/* Color azul identitario de CafeWeb */
+.proceso-header .text-highlight {
+    color: #0B11FF;
+}
+
+.proceso-header p {
+    font-size: 1.05rem;
+    color: #aaaaaa;
+    line-height: 1.6;
+}
+
+/* Botón CTA estilo WhatsApp premium */
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #0B11FF; /* Usamos tu azul principal para unificar el branding */
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 8px; /* Bordes un toque más rectos y modernos */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+    background-color: #ffffff;
+    color: #0B11FF;
+    transform: translateY(-2px);
+}
+
+/* Contenedor Grid con bordes discontinuos sutiles */
+.pasos-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 columna por defecto en móviles */
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 1px dashed #222; /* El borde que encierra a toda la estructura */
+    border-radius: 8px;
+}
+
+/* Tarjeta individual del paso */
+.paso-card {
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px dashed #222; /* Separadores de fila en mobile */
+    transition: background-color 0.3s ease;
+}
+
+.paso-card:last-child {
+    border-bottom: none; /* Quitamos el último borde inferior */
+}
+
+.paso-card:hover {
+    background-color: #050505; /* Destello oscuro muy fino */
+}
+
+/* Estilos de los números gigantes */
+.paso-number {
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #ffffff;
+    margin-bottom: 20px;
+ }
+
+.paso-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    color: #ffffff;
+}
+
+.paso-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #888888;
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* Tablets en adelante */
+@media (min-width: 768px) {
+    .pasos-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2x2 en tablets */
+    }
+    
+    .paso-card:nth-child(1), .paso-card:nth-child(2) {
+        border-bottom: 1px dashed #222;
+    }
+    
+    .paso-card:nth-child(odd) {
+        border-right: 1px dashed #222; /* Línea divisoria vertical */
+    }
+}
+
+/* Escritorio (Monitores y Notebooks) */
+@media (min-width: 1024px) {
+    .proceso-header {
+        flex-direction: row; /* Cabecera alineada lado a lado */
+        align-items: center;
+    }
+
+    .proceso-header h2 {
+        font-size: 3rem;
+    }
+
+    .pasos-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 Columnas perfectas una al lado de la otra */
+    }
+
+    .paso-card {
+        border-bottom: none; /* Quitamos bordes horizontales intermedios */
+        border-right: 1px dashed #222; /* Volvemos a activar las divisiones verticales continuas */
+    }
+
+    .paso-card:last-child {
+        border-right: none; /* La última columna no lleva borde derecho */
+    }
+}
+
+/* contacto */
+
+/* --- SECCIÓN CONTACTO --- */
+.contacto-seccion {
+    background-color: #000000;
+    padding: 60px 4%;
+    color: #333333; /* Los textos internos van sobre fondo claro */
+}
+
+/* Contenedor general en Flexbox Mobile-First */
+.contacto-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: stretch; /* Hace que ambas tarjetas tengan la misma altura en desktop */
+}
+
+/* Tarjeta de Información Directa */
+.contacto-info-card {
+    background-color: #fafafa; /* Color tiza / off-white muy elegante */
+    padding: 40px 30px;
+    border-radius: 12px;
+    flex: 1;
+}
+
+.contacto-tag {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #111111;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.contacto-info-card h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 35px;
+    line-height: 1.2;
+}
+
+.text-highlight {
+    color: #0B11FF; /* Tu azul característico */
+}
+
+/* Grillas internas usando CSS Grid */
+.info-grid, .redes-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+@media (min-width: 480px) {
+    .info-grid, .redes-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en celulares medianos */
+    }
+}
+
+.info-item, .redes-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.info-icon {
+    font-size: 1.5rem;
+    color: #0B11FF;
+    width: 30px;
+    text-align: center;
+}
+
+.info-item h3, .redes-item h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #111111;
+}
+
+.info-item p, .redes-item span {
+    font-size: 0.9rem;
+    color: #666666;
+    margin-top: 2px;
+}
+
+.redes-titulo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 25px;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 30px;
+}
+
+.redes-item i {
+    font-size: 1.6rem;
+    color: #0B11FF;
+    width: 30px;
+    text-align: center;
+}
+
+/* Tarjeta del Formulario */
+.contacto-form-card {
+    background-color: #f4f4f4; /* Un tono sutilmente diferente para dar asimetría */
+    padding: 40px 30px;
+    border-radius: 12px;
+    flex: 1.2; /* Es ligeramente más ancha que la de info */
+    position: relative;
+    overflow: hidden;
+}
+
+.contacto-form-card h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0B11FF;
+    margin-bottom: 15px;
+}
+
+.form-sub {
+    font-size: 0.95rem;
+    color: #555555;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+/* Distribución del formulario */
+.form-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (min-width: 576px) {
+    .form-row {
+        flex-direction: row; /* inputs uno al lado del otro en pantallas medianas */
+    }
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #222222;
+}
+
+.form-group label span {
+    color: #0B11FF; /* Asteriscos obligatorios en azul */
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    background-color: #ffffff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #111111;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #0B11FF;
+    box-shadow: 0 0 0 3px rgba(11, 17, 255, 0.1);
+}
+
+/* Botón del Formulario */
+.btn-enviar {
+    align-self: flex-start;
+    background-color: #0B11FF;
+    color: #ffffff;
+    border: none;
+    padding: 14px 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-enviar:hover {
+    background-color: #111111;
+    transform: translateY(-2px);
+}
+
+/* Número decorativo de fondo (El '1' de la esquina inferior derecha) */
+.bg-decor-number {
+    position: absolute;
+    bottom: -40px;
+    right: -10px;
+    font-size: 10rem;
+    font-weight: 900;
+    color: rgba(11, 17, 255, 0.08); /* Sutil transparencia azul */
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* --- MEDIA QUERY: ESCRITORIO (Lado a lado de forma simétrica) --- */
+@media (min-width: 992px) {
+    .contacto-seccion {
+        padding: 100px 6%;
+    }
+
+    .contacto-container {
+        flex-direction: row; /* Se ponen en paralelo */
+        gap: 25px;
+    }
+    
+    .contacto-info-card, .contacto-form-card {
+        padding: 50px 45px;
+    }
+}
+
+/* footer */
+
+/* --- FOOTER GENERAL --- */
+footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 40px 6% 20px;
+    border-top: 1px solid #111111; /* Una línea divisoria muy sutil arriba */
+    font-size: 0.95rem;
+}
+
+/* 1. Barra Superior */
+.footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #161616;
+}
+
+.footer-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+}
+
+.footer-nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.footer-nav ul li a:hover {
+    color: #0B11FF; /* Hover azul CafeWeb */
+}
+
+.footer-socials {
+    display: flex;
+    gap: 18px;
+    
+}
+
+.footer-socials a {
+    color: #ffffff;
+    font-size: 1.1rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+    background-color: #0B11FF;
+    padding: 10px;
+        border-radius: 50%;
+}
+
+.footer-socials a:hover {
+    color: #0B11FF;
+    transform: translateY(-2px);
+    background-color: #fff;
+}
+
+/* 2. Cuerpo Central (Estructura de Columnas) */
+.footer-main-content {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 columna en celulares */
+    gap: 40px;
+    padding: 50px 0;
+}
+
+.footer-col h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-col ul li a {
+    color: #aaaaaa;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.2s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #0B11FF;
+    padding-left: 4px; /* Pequeño desplazamiento interactivo */
+}
+
+/* Detalles de la columna de marca */
+.col-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-logo img {
+    height: 40px; /* Tamaño controlado del logo */
+    width: auto;
+}
+
+.col-brand p {
+    color: #888888;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    max-width: 300px;
+}
+
+/* Filas con iconos de contacto (Estilo lista de la captura) */
+.col-contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    
+   
+}
+
+.contact-row i {
+    font-size: 1rem;
+    color: #ffffff;
+    border: 1px solid #333333;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+     background-color: #0B11FF;
+}
+
+.contact-row i:hover {
+    background-color: #fff;
+    color: #0B11FF;
+}
+.contact-row h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 2px;
+}
+
+.contact-row p {
+    color: #aaaaaa;
+    font-size: 0.85rem;
+}
+
+/* 3. Barra Inferior de Legales */
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding-top: 30px;
+    border-top: 1px solid #161616;
+    font-size: 0.85rem;
+    color: #666666;
+}
+
+.footer-bottom a {
+    color: #666666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+    color: #ffffff;
+}
+
+.bottom-links {
+    display: flex;
+    gap: 10px;
+}
+
+.bottom-links span {
+    color: #222222;
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* Tablets en adelante (Distribución intermedio) */
+@media (min-width: 768px) {
+    .footer-top {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-main-content {
+        grid-template-columns: repeat(2, 1fr); /* Divide 2x2 en pantallas medianas */
+    }
+
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* Escritorio (Monitores y Notebooks completos) */
+@media (min-width: 1024px) {
+    .footer-main-content {
+        grid-template-columns: 1.2fr 1fr 0.8fr 0.8fr; /* 4 Columnas perfectas con anchos proporcionales */
+        gap: 30px;
+    }
+}
+
+/* --- SECCIÓN PLANES (Estilo CafeWeb) --- */
+.planes-seccion {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 60px 5%;
+}
+
+.planes-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+}
+
+.planes-tag {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.planes-header h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.planes-header p {
+    font-size: 1.05rem;
+    color: #aaaaaa;
+    line-height: 1.5;
+}
+
+/* Grilla en Flexbox ordenada en un máximo de 3 columnas para Escritorio */
+.planes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estructura Base de la Tarjeta */
+.plan-card {
+    background-color: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 30px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Ajuste clave de Flexbox para bloquear 3 columnas exactas restando el espacio del gap */
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 290px; /* Evita que colapsen feo antes del breakpoint móvil */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efecto hover alineado a la estética de tus testimonios */
+.plan-card:hover {
+    border-color: #0B11FF; 
+    transform: translateY(-5px);
+}
+
+/* Tarjeta Destacada "Más Popular" (Borde Dorado/Amarillo sutil según tu screen) */
+.plan-card.featured {
+    border-color:  #0B11FF;
+}
+
+/* Badges de las Tarjetas */
+.badge {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #aaaaaa;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge.yellow-badge {
+    border-color: #0B11FF;
+    color: #fff;
+}
+
+/* Elementos de Texto internos */
+.plan-card h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.payment-type {
+    font-size: 0.85rem;
+    color: #888888;
+    margin-bottom: 25px;
+    display: block;
+}
+
+/* Lista de ítems */
+.features {
+    list-style: none;
+    width: 100%;
+    margin-bottom: auto; /* Empuja los bloques inferiores al fondo manteniendo simetría */
+    padding: 0;
+}
+
+.features li {
+    font-size: 0.95rem;
+    color: #cccccc;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+.features li i {
+    color: #0B11FF; /* Tildes de color azul CafeWeb */
+    font-size: 0.85rem;
+}
+
+.plan-card.featured .features li i {
+    color: #0B11FF;
+}
+
+/* Recuadro de Regalo (Hosting + SSL) */
+.promo-box {
+    background-color: rgba(11, 17, 255, 0.05);
+    border: 1px dashed rgba(11, 17, 255, 0.4);
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.plan-card.featured .promo-box {
+    background-color: rgba(243, 156, 18, 0.05);
+    border-color: rgba(3, 41, 255, 0.4);
+}
+
+.promo-box strong {
+    color: #0B11FF;
+}
+
+.plan-card.featured .promo-box strong {
+    color: #0B11FF;
+}
+
+/* Links de Acción inferiores */
+.btn-card-more {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    align-self: center;
+    margin-top: 10px;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-card-more i {
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+
+.btn-card-more:hover {
+    color: #0B11FF;
+}
+
+.btn-card-more:hover i {
+    transform: translateX(3px);
+}
+
+/* --- RESPONSIVE SMARTPHONES (Mobile) --- */
+@media (max-width: 992px) {
+    .planes-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .plan-card {
+        /* En celulares pasa a ocupar el 100% y se apilan en una sola columna limpia */
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+
+
+ /* --- SECCIÓN CLIENTES Y PORTAFOLIO --- */
+.clientes-seccion {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 60px 8%;
+}
+
+.clientes-header {
+    text-align: left; /* Alineado a la izquierda según tu captura */
+    max-width: 900px;
+    margin-bottom: 50px;
+}
+
+.clientes-tag {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #0B11FF;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.clientes-header h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+/* El texto duplicado en outline/destacado */
+.text-highlight-orange {
+    color: #0B11FF;
+    display: block;
+    font-size: 4rem;
+    margin-top: -15px;
+    opacity: 0.8;
+}
+
+.clientes-sub {
+    font-size: 1.1rem;
+    color: #aaaaaa;
+    line-height: 1.6;
+    max-width: 650px;
+    margin-bottom: 40px;
+}
+
+/* Fila de Métricas */
+.clientes-stats-row {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.c-stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-stat-num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.c-stat-lbl {
+    font-size: 0.75rem;
+    color: #666666;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-top: 5px;
+}
+
+/* --- GRILLA EN 3 COLUMNAS --- */
+.portfolio-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: flex-start;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Tarjeta Individual */
+.portfolio-card {
+    background-color: #0a0a0a;
+    border: 1px solid #161616;
+    border-radius: 20px; /* Esquinas redondeadas pronunciadas como la captura */
+    overflow: hidden;
+    flex: 1 1 calc(33.333% - 17px);
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenedor de la Imagen y el Efecto Hover */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* Capa oculta por defecto (Overlay) */
+.hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Capa oscura sutil */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    
+    /* El truco clave de tu captura: desenfoque del fondo (Glassmorphism) */
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Comportamiento al pasar el mouse por encima de la tarjeta */
+.portfolio-card:hover .hover-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.portfolio-card:hover .image-container img {
+    transform: scale(1.05); /* Zoom sutil a la imagen al hacer hover */
+}
+
+/* Botón VER PROYECTO */
+.btn-ver-proyecto {
+    color:#0B11FF;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    transition: transform 0.2s ease;
+}
+
+.btn-ver-proyecto i {
+    font-size: 1rem;
+}
+
+.btn-ver-proyecto:hover {
+    transform: scale(1.05);
+}
+
+.hover-subtext {
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* Contenido de texto inferior */
+.card-content {
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-content h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #0B11FF;
+    margin-bottom: 6px;
+}
+
+.project-tag {
+    font-size: 0.95rem;
+    color: #888888;
+    margin-bottom: 25px;
+}
+
+/* Footer interno de la tarjeta */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Empuja los elementos al fondo */
+}
+
+.visit-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease;
+}
+
+.visit-link i {
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+
+.visit-link:hover {
+    color:#0B11FF;
+}
+
+.visit-link:hover i {
+    transform: translateX(3px);
+}
+
+/* Ícono del mundo/globo abajo a la derecha */
+.world-icon {
+    width: 32px;
+    height: 32px;
+    background-color: #111111;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #222222;
+}
+
+.world-icon i {
+    color: #0B11FF;
+    font-size: 0.9rem;
+}
+
+/* --- MEDIA QUERY RESPONSIVE (Móviles) --- */
+@media (max-width: 992px) {
+    .clientes-header h2 {
+        font-size: 2.5rem;
+    }
+    .text-highlight-orange {
+        font-size: 2.8rem;
+    }
+    .portfolio-card {
+        flex: 1 1 100%; /* Pasa a formato lista de una sola columna */
+        max-width: 100%;
+    }
+    .clientes-stats-row {
+        gap: 20px;
+    }
+}
+
+
+/* --- SECCIÓN BLOG DIGITAL --- */
+.blog-seccion {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 60px 6%;
+    border-top: 1px solid #111111;
+}
+
+.blog-header {
+    text-align: left;
+    max-width: 1000px;
+    margin-bottom: 50px;
+}
+
+.blog-tag-top {
+    font-size: 0.85rem;
+    color: #0B11FF;
+    letter-spacing: 1px;
+}
+
+.blog-header h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 15px 0;
+}
+
+.blog-sub {
+    font-size: 1.1rem;
+    color: #aaaaaa;
+    line-height: 1.6;
+    max-width: 700px;
+    margin-bottom: 35px;
+}
+
+/* Listado horizontal de filtros */
+.blog-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #161616;
+    padding-bottom: 25px;
+}
+
+.cat-label {
+    color: #fff;
+    font-weight: 600;
+}
+
+.cat-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.cat-link:hover, .cat-link.active {
+    background-color:  #0B11FF;
+    color: #fff;
+    border-radius: 60px;
+    padding: 12px 14px;
+
+}
+
+/* Grilla Flexbox del Blog */
+.blog-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: flex-start;
+    max-width: 1300px;
+    margin: 40px auto 0 auto;
+}
+
+/* Tarjeta del Blog */
+.blog-card {
+    background-color: #0a0a0a;
+    border: 1px solid #161616;
+    border-radius: 20px;
+    overflow: hidden;
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease;
+}
+
+.blog-card:hover {
+    border-color: #222222;
+}
+
+/* Caja contenedora de la foto */
+.blog-img-box {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+.blog-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Píldora "Artículo" flotando arriba a la izquierda de la imagen */
+.card-badge-floating {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color:#0B11FF;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+/* Cuerpo de texto interno */
+.blog-card-body {
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.blog-meta-top {
+    font-size: 0.8rem;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.blog-card-body h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #ffffff;
+    margin-bottom: 12px;
+    transition: color 0.2s ease;
+}
+
+.blog-card:hover .blog-card-body h3 {
+    color: #0B11FF;
+}
+
+.blog-card-body p {
+    font-size: 0.95rem;
+    color: #777777;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+/* Footer de la tarjeta */
+.blog-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Empuja hacia abajo del todo */
+    border-top: 1px solid #141414;
+    padding-top: 15px;
+}
+
+.read-more-link {
+    border-radius: 60px;
+    background-color: #0B11FF;
+     padding: 12px 24px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.read-more-link:hover {
+    background-color: #fff;
+    color:#0B11FF;
+}
+.read-time {
+    color: #444444;
+    font-size: 0.8rem;
+}
+
+/* --- ADAPTACIÓN SMARTPHONES COMPLETAS (Media queries combinadas) --- */
+@media (max-width: 992px) {
+    .blog-header h2 {
+        font-size: 2.6rem;
+    }
+    
+    .plan-card, .blog-card {
+        flex: 1 1 100%; /* Las tarjetas se apilan al 100% de ancho en móviles */
+        max-width: 100%;
+    }
+    
+    .planes-container, .blog-container {
+        gap: 20px;
+    }
+}
+
+/* --- PAGINACIÓN DEL BLOG --- */
+.blog-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 50px; /* Separación prudente de las tarjetas superiores */
+    width: 100%;
+}
+
+/* Estilo base para números y flechas */
+.page-number, .page-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: #0b0b0b;
+    border: 1px solid #1a1a1a;
+    border-radius: 8px; /* Redondeado sutil alineado a las tarjetas */
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+/* Estado Hover (Al pasar el mouse) */
+.page-number:hover, .page-arrow:hover {
+    border-color:  #0B11FF;
+    color:  #fff;
+    background-color: #0B11FF;
+}
+
+/* Estado Activo (Página actual) */
+.page-number.active {
+    background-color: #0B11FF;
+    border-color: #0B11FF;
+    color: #fff; /* Texto oscuro para contraste */
+    font-weight: 700;
+}
+
+/* Los tres puntos suspensivos */
+.page-dots {
+    color: #555555;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    padding: 0 4px;
+    display: inline-block;
+}
+
+/* Ajuste fino para los íconos de las flechas */
+.page-arrow i {
+    font-size: 0.75rem;
+}
+
+/* --- OPTIMIZACIÓN SMARTPHONES --- */
+@media (max-width: 480px) {
+    .blog-pagination {
+        gap: 6px; /* Reducimos el espacio en pantallas muy chicas */
+        margin-top: 40px;
+    }
+    
+    .page-number, .page-arrow {
+        width: 36px;
+        height: 36px; /* Ajuste de tamaño para pulgares en mobile */
+        font-size: 0.85rem;
+    }
+}
+
+
+
+
+
+
+
+
+/* --- RESET Y CONTENEDOR RAIZ --- */
+.post-main-container {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 60px 8%;
+     box-sizing: border-box;
+}
+
+/* --- HEADER DEL ARTÍCULO --- */
+.post-header {
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto 40px auto;
+}
+
+.post-top-tag {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #f39c12;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.post-header h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    max-width: 850px;
+    margin: 0 0 25px 0;
+}
+
+.post-meta-data {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    color: #555555;
+    font-size: 0.9rem;
+    margin-bottom: 35px;
+    border-bottom: 1px solid #111111;
+    padding-bottom: 25px;
+}
+
+.post-share-icons {
+    display: flex;
+    gap: 12px;
+    margin-left: auto; /* Empuja los iconos a la derecha en escritorio */
+}
+
+.post-share-icons a {
+    color: #888888;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.post-share-icons a:hover {
+    color: #f39c12;
+}
+
+/* Contenedor de la Imagen Destacada */
+.post-main-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.post-main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- CUERPO EN MAQUETADO DOS COLUMNAS (FLEXBOX) --- */
+.post-layout-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 50px auto 0 auto;
+}
+
+/* Menú Lateral (Sidebar) */
+.post-sidebar-menu {
+    flex: 0 0 300px; /* Ancho fijo real para evitar colapso de texto */
+}
+
+.sidebar-sticky-card {
+    position: sticky;
+    top: 40px;
+    background-color: #0a0a0a;
+    border: 1px solid #141414;
+    border-radius: 20px;
+    padding: 30px 24px;
+}
+
+.sidebar-sticky-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    color: #ffffff;
+}
+
+.sidebar-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+}
+
+.sidebar-navigation li {
+    margin-bottom: 16px;
+}
+
+.sidebar-navigation a {
+    color: #666666;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.2s ease;
+}
+
+.sidebar-navigation a:hover, 
+.sidebar-navigation a.active {
+    color: #f39c12;
+}
+
+.sidebar-cta-block {
+    border-top: 1px solid #161616;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.sidebar-cta-block p {
+    font-size: 0.85rem;
+    color: #888888;
+    margin: 0 0 15px 0;
+}
+
+.btn-sidebar-action {
+    display: block;
+    background-color: #f39c12;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 12px 0;
+    border-radius: 12px;
+    transition: transform 0.2s ease;
+}
+
+.btn-sidebar-action:hover {
+    transform: translateY(-2px);
+}
+
+/* Columna del Contenido Textual */
+.post-main-content {
+    flex: 1; /* Ocupa todo el espacio restante de forma elástica */
+    max-width: 800px;
+}
+
+.post-lead-paragraph {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #cccccc;
+    margin-bottom: 35px;
+}
+
+.post-main-content h2 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 45px 0 20px 0;
+    line-height: 1.3;
+}
+
+.post-main-content p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: #888888;
+    margin-bottom: 25px;
+}
+
+/* Widget de Utilidad Inferior */
+.post-utility-box {
+    background-color: #0a0a0a;
+    border: 1px solid #141414;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.post-utility-box p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 20px 0;
+}
+
+.utility-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-util-yes, .btn-util-no {
+    background-color: #111111;
+    border: 1px solid #222222;
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-util-yes:hover, .btn-util-no:hover {
+    border-color: #f39c12;
+    color: #f39c12;
+}
+
+/* --- SECCIÓN ARTÍCULOS RELACIONADOS --- */
+.post-related-section {
+    margin-top: 100px;
+    border-top: 1px solid #111111;
+    padding-top: 60px;
+}
+
+.related-section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+    letter-spacing: -0.5px;
+}
+
+.accent-gold-text {
+    color: #f39c12;
+}
+
+.related-cards-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.related-post-card {
+    background-color: #0a0a0a;
+    border: 1px solid #141414;
+    border-radius: 20px;
+    overflow: hidden;
+    flex: 1 1 calc(33.333% - 17px);
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.related-img-container {
+    width: 100%;
+    height: 180px; /* Forzamos altura fija de contenedor */
+}
+
+.related-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen armónicamente sin deformar */
+}
+
+.related-card-body {
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.related-card-body h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0 0 20px 0;
+    color: #ffffff;
+}
+
+.related-read-more {
+    color: #f39c12;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* --- BANNER DE CONVERSIÓN INFERIOR --- */
+.post-footer-cta-banner {
+    margin-top: 80px;
+    background-color: #050505;
+    border: 1px solid #141414;
+    border-radius: 20px;
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.cta-banner-inner {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-mini-tag {
+    font-size: 0.75rem;
+    color: #f39c12;
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.post-footer-cta-banner h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 20px 0;
+    letter-spacing: -0.5px;
+}
+
+.post-footer-cta-banner p {
+    color: #666666;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-bottom: 35px;
+}
+
+.cta-banner-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-cta-gold, .btn-cta-outline {
+    padding: 14px 32px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-cta-gold {
+    background-color: #f39c12;
+    color: #000000;
+}
+
+.btn-cta-gold:hover {
+    transform: translateY(-2px);
+}
+
+.btn-cta-outline {
+    background-color: transparent;
+    border: 1px solid #222222;
+    color: #ffffff;
+}
+
+.btn-cta-outline:hover {
+    border-color: #f39c12;
+    color: #f39c12;
+}
+
+/* --- QUERY DE ADAPTACIÓN PARA SMARTPHONES (MOBILE-FIRST) --- */
+@media (max-width: 992px) {
+    .post-main-container {
+        padding: 40px 5%;
+    }
+
+    .post-header h1 {
+        font-size: 2.4rem;
+    }
+
+    .post-meta-data {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .post-share-icons {
+        margin-left: 0; /* Resetea el empuje derecho */
+        margin-top: 5px;
+    }
+
+    .post-layout-wrapper {
+        flex-direction: column; /* Apila el layout verticalmente */
+        gap: 30px;
+    }
+
+    .post-sidebar-menu {
+        display: none; /* Oculta el menú flotante en mobile para optimizar UX de lectura */
+    }
+
+    .post-main-content {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .post-main-content h2 {
+        font-size: 1.6rem;
+        margin: 35px 0 15px 0;
+    }
+
+    .related-post-card {
+        flex: 1 1 100%; /* Tarjetas al 100% de ancho en vertical */
+        max-width: 100%;
+    }
+
+    .post-footer-cta-banner {
+        padding: 40px 20px;
+    }
+
+    .post-footer-cta-banner h2 {
+        font-size: 1.8rem;
+    }
+
+    .cta-banner-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn-cta-gold, .btn-cta-outline {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}
+
+ 
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.main-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- ENCABEZADO --- */
+.article-header {
+    text-align: left;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.category-tag {
+    background-color:#0B11FF;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    border-radius: 3px;
+}
+
+.article-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 15px;
+    letter-spacing: -1px;
+}
+
+.meta-info {
+    color: #888;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* --- IMAGEN DESTACADA (PLACEHOLDER) --- */
+.featured-image {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.image-mock img{
+    width:100%;
+    height: 350px;
+    background: url("../images/blog.png");
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* --- FLEXBOX LAYOUT (CUERPO + SIDEBAR) --- */
+.content-wrapper {
+    display: flex;
+    flex-direction: row; /* En PC se ven lado a lado */
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+/* Barra Lateral (Tabla de contenidos) */
+.sidebar {
+    flex: 1; /* Ocupa 1 parte proporcional */
+    min-width: 250px;
+}
+
+.toc-card {
+    background-color: #141414;
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 4px solid #0B11FF;
+    position: sticky;
+    top: 20px;
+}
+
+.toc-card h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.toc-card ul {
+    list-style: none;
+}
+
+.toc-card ul li {
+    margin-bottom: 12px;
+}
+
+.toc-card ul li a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.toc-card ul li a:hover {
+    color: #0B11FF;
+}
+
+.cta-sidebar {
+    width: 100%;
+    background-color: #0B11FF;
+    border: none;
+    padding: 10px;
+    margin-top: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 40px;
+    color: #fff;
+}
+
+.cta-sidebar:hover {
+    background-color: #fff;
+    color: #0B11FF;
+}
+
+/* Contenido del post */
+.article-body {
+    flex: 3; /* Ocupa 3 partes proporcionales (más ancho) */
+}
+
+.lead-text {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.article-body h2 {
+    color: #fff;
+    font-size: 1.6rem;
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+.article-body p {
+    margin-bottom: 20px;
+    color: #b5b5b5;
+    text-align: justify;
+}
+
+/* --- ARTÍCULOS RELACIONADOS --- */
+.related-section {
+    border-top: 1px solid #222;
+    padding-top: 40px;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.section-title span {
+    color: #0B11FF;
+}
+
+/* Flexbox para las Tarjetas Relacionadas */
+.related-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.card {
+    flex: 1;
+    background-color: #141414;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #222;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img img {
+    height: 250px;
+   
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-content h3 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.read-more {
+    color: #fff;
+    background-color: #0B11FF;
+    padding: 12px 8px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.read-more:hover {
+    background-color: #fff;
+    color:#0B11FF;
+}
+
+/* --- BANNER INFERIOR (CTA) --- */
+.bottom-cta {
+    background: #141414;
+    border: 1px solid #222;
+    padding: 40px;
+    text-align: center;
+    border-radius: 25px;
+    margin-top: 40px;
+}
+
+.bottom-cta h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.bottom-cta h2 span {
+    color: #0B11FF;
+}
+
+.bottom-cta p {
+    color: #aaa;
+    margin-bottom: 25px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+ 
+ 
+
+
+.btn-secondary {
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 60px;
+}
+
+/* --- RESPONSIVIDAD (MEDIA QUERIES) --- */
+
+/* Tablets (pantallas menores a 900px) */
+@media (max-width: 900px) {
+    .content-wrapper {
+        flex-direction: column; /* La barra de navegación pasa arriba del contenido */
+    }
+    
+    .sidebar {
+        width: 100%;
+    }
+    
+    .related-grid {
+        flex-direction: column; /* Tarjetas apiladas una debajo de otra */
+    }
+}
+
+/* Smartphones (pantallas menores a 600px) */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    .article-header h1 {
+        font-size: 1.8rem; /* Letras más pequeñas en celulares */
+    }
+    
+    .featured-image .image-mock {
+        height: 200px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column; /* Los botones inferiores se apilan verticalmente */
+        gap: 10px;
+    }
+}
+
+.btn-wsp {
+    position: fixed;
+    width: 75px;
+    height: 75px;
+    line-height: 75px;
+    bottom: 30px;
+    right: 30px;
+    background: #0B11FF;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 45px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+
+.btn-wsp:hover {
+    text-decoration: none;
+    color: #0B11FF;
+    background-color: #fff;
+}
