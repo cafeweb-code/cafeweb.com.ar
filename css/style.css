@@ -23,7 +23,7 @@ header {
 }
 
 .logo img {
-    height: 50px;
+    height: 65px;
 }
 #menu {
      display: none; 
@@ -88,7 +88,7 @@ nav ul li a:hover {
     }
 
     .logo img {
-        height: 42px;    /* Un toque más chico para dar aire en mobile */
+        height: 58px;    /* Un toque más chico para dar aire en mobile */
     }
 
     /* El menú (nav) sigue oculto de fondo */
